@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<head th:fragment="head">
+    <title>THE STAR WARS FORUM</title>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/images/vader2.png}"  />
+    <meta charset="UTF-8"></meta>
+    <link th:href="@{/css/style.css}" rel="stylesheet" />
+    <link th:href="@{/css/style2.css}" rel="stylesheet" />
+    <link th:href="@{/css/bootstrap.css}" rel="stylesheet" />
+</head>
+<body>
+    <div th:fragment="logout">
+        <form method="post" th:action="@{/logout}">
+            <button type="submit" value="logout" class="btn-warning">Logouttt</button>
+        </form>
+    </div>
+    <div th:fragment="js" >
+        <script type="text/javascript" th:src="@{/js/bootstrap.js}"></script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="fragments :: head" ></head>
+
+<body>
+<h1>We are going to add a question</h1>
+<div class="container-fluid">
+
+    <h3>Enter new question</h3>
+    <form method="post" th:object="${question}" th:action="@{/addQuestionConfirm}" >
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label for="title">Question Title: </label>
+                <input id="title" type="text" th:field="*{title}" class="form-control" />
+                <span class="validation-error"
+                      th:if="${#fields.hasErrors('title')}"
+                      th:errors="*{title}">
+                    </span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <label>Body of the question: </label>
+                <textarea th:field="*{body}" name="body" class="form-control"></textarea>
+                <span class="validation-error"
+                      th:if="${#fields.hasErrors('body')}"
+                      th:errors="*{body}">
+                </span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-4 mb-3">
+                <input type="submit" value="Add Question" class="btn btn-primary" />
+            </div>
+        </div>
+    </form>
+</div>
+<div th:replace="fragments :: js"></div>
+</body>
+</html>

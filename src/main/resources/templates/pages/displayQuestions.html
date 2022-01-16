@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head th:replace="fragments :: head" ></head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<body>
+
+<div class="container">
+    <h2>All questions</h2>
+    <p>Here you can see all questions done by users:</p><br>
+    <div th:each="question : ${questions}" >
+        <div class="media">
+            <div class="media-left">
+                <img src="/images/img_avatar5.png" class="media-object" style="width:45px">
+            </div>
+            <div class="media-body">
+                <h4 class="media-heading" th:text="${question.getTitle()}"><small><i>Posted on February 222, 2016</i></small></h4>
+                <p th:text="${question.getBody()}" class="text-justify"></p>
+                <a data-toggle="tooltip" title="Edit" th:href="@{'/displayOneQuestion/{id}'(id=${question.getId()})}"
+                   class="btn btn-xs p-0 float-end me-1">
+                    <i data-feather="edit" width="20"></i>
+                </a>
+
+            </div>
+            <div>
+                <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{'/displayOneQuestion/{id}'(id=${question.getId()})}" >
+                    <button type="submit" data-toggle="tooltip" title="Go to question"    class="float-end btn-xs btn-success" th:text="'Go to question'"></button>
+                </form>
+
+                <form sec:authorize="hasRole('ROLE_ADMIN')" th:action="@{'/deleteQuestion/{id}'(id=${question.getId()})}" >
+                    <button type="submit" data-toggle="tooltip" title="Go to question"    class="float-end btn-xs btn-danger" th:text="'Delete question'"></button>
+                </form>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div th:replace="fragments :: logout"></div>
+</div>
+<div th:replace="fragments :: js"></div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head th:replace="fragments :: head" ></head>
+
+<body>
+<h1 th:text="${something}" />
+
+<div th:replace="fragments :: logout"></div>
+<div th:replace="fragments :: js"></div>
+</body>
+</html>

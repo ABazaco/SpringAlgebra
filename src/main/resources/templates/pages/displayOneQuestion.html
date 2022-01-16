@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security" >
+<head th:replace="fragments :: head" ></head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<body>
+
+
+<div class="container title"><br>This is a particular question<br><br></div>
+<div class="container list" id="item">
+    <div class="container">
+        <div class="row">
+            <div class="col-6 menu"> <img src="/images/head-photo.jpg" style="width:50%"/> <br>
+            </div>
+            <div class="col-6 menu"><img src="/images/head-photo.jpg" style="width:50%" /> <br>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-6 menu"><h4 class="media-heading" th:text="${question.getTitle()}"> <small><i>Posted on February 19, 2016</i></small></h4>
+            </div>
+
+            <div class="col-6 menu"> <p th:text="${question.getBody()}"></p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container footer"><br><p style="color: violet" th:text="'te user that formulated this question is -> '+ ${name}"></p><br>
+</div>
+
+
+<div th:replace="fragments :: js"></div>
+</body>
+</html>
+
+
