@@ -16,3 +16,11 @@ create table if not exists questions (
     title varchar(60) not null,
     body varchar(400) not null
     );
+
+create table if not exists Film (
+    id identity,
+    title varchar(60) not null,
+    rating int,
+    watched bit,
+    comments varchar(400) not null
+    );

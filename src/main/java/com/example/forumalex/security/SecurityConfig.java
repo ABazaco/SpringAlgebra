@@ -43,6 +43,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login?logout")
                 .and()
                 .csrf().ignoringRequestMatchers(PathRequest.toH2Console())
+                .ignoringAntMatchers("/api/**", "/login")
                 .and()
                 .headers().frameOptions().sameOrigin();
         ;
